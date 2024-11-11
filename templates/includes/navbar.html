@@ -1,0 +1,50 @@
+{% load static %}
+
+<!-- navbar -->
+
+<header>
+  <div class="container">
+    <nav class="navbar navbar-expand-md" aria-label="Fourth navbar example">
+      <div class="container-fluid">
+        <a href="/" class="navbar-brand d-inline-flex link-body-emphasis text-decoration-none">
+          <img src="{% static 'img/favicon.png' %}" alt="" height="30">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" href="https://github.com/SAGAR-TAMANG/therapist-ai">Docs</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Others</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" target="_blank" href="https://sagartamang.com/">Sagar Tamang</a></li>
+                <li><a class="dropdown-item" target="_blank" href="http://feynmanpi.com/">Feynman Pi</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="col-md-3 text-end">
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">
+              <button type="button" class="btn btn-outline-primary me-2">Logout</button>
+            </a>
+            {% else %}
+            <a href="{% url 'login' %}">
+              <button type="button" class="btn btn-outline-primary me-2">Login</button>
+            </a>
+            <a href="{% url 'register' %}">
+              <button type="button" class="btn btn-primary">Sign-up</button>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>

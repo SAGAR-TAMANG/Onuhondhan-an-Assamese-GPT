@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Chat | Therapst AI{% endblock %}
+
+{% block style %}
+<style>
+  #chat {
+  }
+  body {
+    height: 100vh;
+  }
+  .chat-width {
+    width: 100%;
+  }
+  .text-decoration-none{
+    text-decoration: none;
+  }
+  .card:hover {
+    background-color: #f8f9fa;
+  }
+  .form-control:focus {
+    outline: none;
+    box-shadow: none; /* Optionally remove box-shadow as well */
+    border-color: #ced4da;
+  }
+  .fs-7 {
+    font-size: 0.800rem;
+  }
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #form_div {
+    margin: auto;
+    width: 100%;
+  }
+  .navbar-toggler:focus {
+    --bs-navbar-toggler-focus-width: 0;
+  }
+  #loading1 {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #loading2 {
+  }
+  @media (max-width: 572px) {
+    #card-1 {
+      display: none;
+    }
+    #card-2 {
+      display: none;
+    }
+    .fs-7 {
+      font-size: 0.590rem;
+    }
+  }
+  @media (min-width: 992px) {
+    .chat-width {
+      width: 50%;
+    }
+    #form_div {
+      width: auto;
+    }
+  }
+  .add-loading-dots::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    background-color: #333;
+    border-radius: 50%;
+    animation: loading-animation 1.4s infinite ease-in-out both;
+  }
+  @keyframes loading-animation {
+    0%, 80%, 100% {
+      transform: scale(0);
+    }
+    40% {
+      transform: scale(1);
+    }
+  } 
+</style>
+{% endblock %}
+{% block content %}
+{% include 'includes/navbar.html' %}
+
+<main>
+  <!-- app -->
+  <section class="app">
+    <div>
+      <div class="d-flex justify-content-center mt-3" id="message_block2" hx-ext="ws" ws-connect="/ws/ai-demo/">
+        <div class="chat-width" style="padding-bottom:6rem" id="message-list">
+        </div>
+          <div class="position-fixed chat-width bottom-0 px-2">
+            <div class="row px-2" id="options">
+              {% for cards_bold, cards_normal in zipped %}
+              <div class="col-12 col-sm-6 p-1" id="card-{{ forloop.counter }}">
+                <a href="#" class="text-decoration-none">
+                  <div class="card p-3 card-link" data-bold="{{ cards_bold }}" data-normal="{{ cards_normal }}">
+                    <h1 class="fs-7">{{ cards_bold }}</h1>
+                    <p class="fs-7 m-0 truncate">{{ cards_normal }}</p>
+                  </div>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+
+            <form class="border border-dark border-2" ws-send>
+              {% csrf_token %}
+              <div class="input-group w-auto">
+                <input
+                type="text"
+                name="message"
+                class="form-control p-3"
+                placeholder="Send a message"
+                aria-label="Send a message"
+                aria-describedby="button-addon1"
+                id="chat_input"
+                />
+                <button class="btn btn-primary" type="submit" id="button-addon1">
+                  <i class="fa-solid fa-circle-arrow-up fa-xl text-white"></i>
+                </button>
+              </div>
+            </form>
+            <div class="text-secondary fs-7 text-center mt-2">
+              Pi is only an AI agent, consult a professional for medical advice.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock %}
+
+{% block javascript %}
+<script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/ws.js"></script>
+
+<script>
+  document.body.addEventListener('htmx:wsAfterSend', function(evt) {
+    document.getElementById('chat_input').value = '';
+    window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
+  });
+  
+  document.body.addEventListener('htmx:wsAfterMessage', function(evt) {
+    window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
+  })
+
+  var cardLinks = document.querySelectorAll('.card-link');
+    
+  cardLinks.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      var boldText = link.dataset.bold;
+      var normalText = link.dataset.normal;
+      var message = boldText + " " + normalText;
+
+      console.log('Message:', message);
+      document.getElementById('chat_input').value = message;
+      document.getElementById('button-addon1').click();
+    });
+
+    input = document.getElementById('button-addon1')
+    input.addEventListener('click', function() {
+      document.getElementById('options').style.display = 'none';
+    });
+  });
+</script>
+{% endblock %}

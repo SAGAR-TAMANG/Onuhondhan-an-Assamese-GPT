@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block style %}
+
+<!-- <style>
+  main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style> -->
+
+{% endblock %}
+
+{% block content %}
+
+{% include 'includes/navbar.html' %}
+
+<main>
+  <div class="row container mx-auto">
+    <div class="col-md-4 col-12 mx-auto">
+      {% if msg %}
+      <div class="alert alert-info" role="alert">
+        {{ msg }}
+        </div>
+        {% endif %}
+        <form method="post" class="mb-2">
+          {% csrf_token %}
+          {{ form }}
+          <button type="submit" class="btn btn-outline-primary w-100">Login</button>
+        </form>
+        <div id="g_id_onload"
+          data-client_id="1095555619610-2on3t0qha0oae0bcsdsvqg1ktt9sq6lv.apps.googleusercontent.com"
+          data-context="signin"
+          data-ux_mode="popup"
+          data-login_uri="https://therapy.feynmanpi.com{% url 'auth_receiver' %}"
+          data-auto_select="true"
+          data-itp_support="false">
+        </div>
+
+        <div class="g_id_signin"
+          data-type="standard"
+          data-shape="rectangular"
+          data-theme="filled_black"
+          data-text="signin_with"
+          data-size="large"
+          data-logo_alignment="left">
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+{% block javascript %}
+
+<script src="https://accounts.google.com/gsi/client" async></script>
+
+{% endblock %}
