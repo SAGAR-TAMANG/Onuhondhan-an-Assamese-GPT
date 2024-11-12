@@ -2,7 +2,7 @@ from channels.generic.websocket import WebsocketConsumer
 import json
 from django.template.loader import render_to_string
 import uuid
-
+from openai import OpenAI
 from dotenv import load_dotenv
 import os
 load_dotenv()
@@ -13,9 +13,13 @@ class ChatConsumerDemo(WebsocketConsumer):
     self.messages = [
       {
         "role": "assistant",
-        "content": "You are a professional AI therapist and your name is Pi and you are developed by Feynman Pi, and you will take on your client a full therapy session from start to finish. You will act like a real therapist, showing listening skills and acting how a good therapist would.\n \nRemember user's answers and act like a real therapist by trying to understand the user.\n \nBegin by greeting and welcoming, starting with a small talk.\n\nBegin by introducing yourself."
+        "content": "I am giving you a name: 'Onhuhondhan' or 'অনুসন্ধান' in Assamese. You are to act like the first Assamese GPT to be built in the world. Introduct yourself with this name during the initial contact with the user while introducing yourself. The user can talk with you in Assamese langauge, be it with Assamese script or in English script (but talking in Assamese). If the user talks in any other language, then reply that you are designed to talk in Assamese."
       },
     ]
+    
+    sutra_url = 'https://api.two.ai/v2'
+    self.client = OpenAI(base_url=sutra_url, api_key=os.getenv("SUTRA_API_KEY"))
+
     self.accept()
 
   def disconnect(self, code):
@@ -62,31 +66,40 @@ class ChatConsumerDemo(WebsocketConsumer):
 
     self.send(text_data=system_message_html)
     
-    from portkey_ai import Portkey
+    
+    # from portkey_ai import Portkey
 
-    client = Portkey(
-      api_key=os.getenv("PORTKEY_API_KEY"),
-      virtual_key=os.getenv("VIRTUAL_KEY"),
-    )
+    # client = Portkey(
+    #   api_key=os.getenv("PORTKEY_API_KEY"),
+    #   virtual_key=os.getenv("VIRTUAL_KEY"),
+    # )
 
-    stream_prompt_completion = client.chat.completions.create(
-      messages=self.messages,
-      model= 'gemini-pro',
-      stream=True,
-      temperature=0.8,
-      max_tokens=180,
-    )
+    # stream_prompt_completion = client.chat.completions.create(
+    #   messages=self.messages,
+    #   model= 'gemini-pro',
+    #   stream=True,
+    #   temperature=0.8,
+    #   max_tokens=180,
+    # )
     
     chunks = []
-      
-    
-    for chunk in stream_prompt_completion:
-      # print(chunk.choices[0].delta['content'])
-      message_chunk = chunk.choices[0].delta.content
-      if message_chunk:
-        chunks.append(message_chunk)
-        chunk = f'<div hx-swap-oob="beforeend:#{contents_div_id}">{_format_token(message_chunk)}</div>'
-        self.send(text_data=chunk)
+
+    stream = self.client.chat.completions.create(
+      model='sutra-light',
+      messages = self.messages,
+      max_tokens=180,
+      temperature=0.3,
+      stream=True
+    )
+
+    for chunk in stream:
+        message_chunk = chunk.choices[0].delta.content
+        if len(chunk.choices) > 0:
+            content = chunk.choices[0].delta.content
+            if content:
+              chunks.append(message_chunk)
+              chunk = f'<div hx-swap-oob="beforeend:#{contents_div_id}">{_format_token(message_chunk)}</div>'
+              self.send(text_data=chunk)
 
     system_message = ''.join(chunks)
 

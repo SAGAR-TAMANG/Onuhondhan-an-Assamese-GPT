@@ -52,26 +52,80 @@
     </video>
     <section class="hero-content">
       <div class="text-center py-5 my-5">
-        <h1 class="display-2 my-5">
-          <span class="text-outline text-white">
-            Welcome to Your
+        <h1 class="display-2 my-5" id="hero-title">
+          <span class="text-outline text-white" id="assamese-gpt">
+            অনুসন্ধান
           </span> 
           <br>
-          <span class="text-ai-2 text-white">
-            AI Therapist
-          </span></h1>
-        <p class="lead text-white text-outline">Your personal AI-powered mental health support, <br>available 24/7.</p>
-        <div>
+          <span class="text-ai-2 text-white" id="name">
+            অসমীয়া জিপিটি
+          </span>
+        </h1>
+        <p class="lead text-white text-outline" id="subtitle">Onhuhondhan <br>Your Assamese GPT</p>
+        <div id="buttons" style="display: none;">
           <a href="{% url 'app' %}">
-            <button class="btn btn-primary me-2">Get Started</button>
+            <button class="btn btn-primary me-2">আৰম্ভ · Begin</button>
           </a>
           <a href="https://github.com/SAGAR-TAMANG/therapist-ai" target="_blank">
-            <button class="btn btn-outline-primary">Learn More <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+            <button class="btn btn-outline-primary">বিষয়ে · About <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
           </a>
         </div>
-    </div>
+      </div>
     </section>
   </div>
 </main>
+
+
+<script>
+  // GSAP animations
+  document.addEventListener("DOMContentLoaded", function() {
+    // First, animate the Assamese GPT and name with longer duration
+    gsap.from("#assamese-gpt", {
+      opacity: 0,
+      y: -50,
+      duration: 7, // Increased duration
+      delay: 0.5, // Delay before animation starts
+      ease: "power2.out"
+    });
+
+    gsap.from("#name", {
+      opacity: 0,
+      y: -50,
+      duration: 6, // Increased duration
+      delay: 1.5, // Delay after the first animation
+      ease: "power2.out"
+    });
+
+    // Animate the subtitle with delay to make it appear after name
+    gsap.from("#subtitle", {
+      opacity: 0,
+      y: 30,
+      duration: 4, // Increased duration
+      delay: 5, // Delay after the name animation
+      ease: "power2.out"
+    });
+
+    // Animate the header
+    gsap.from("#header", {
+      opacity: 0,
+      y: -50, // Slide in from the top
+      duration: 3, // Adjust duration as needed
+      delay: 4.5, // Delay for starting the header animation
+      ease: "power2.out"
+    });
+    
+    // Animate the buttons with a delay, appearing a bit later
+    gsap.from("#buttons", {
+      opacity: 0,
+      y: 50,
+      duration: 3, // Increased duration
+      delay: 5.5, // Delay after subtitle animation
+      ease: "power2.out",
+      onStart: function() {
+        document.getElementById('buttons').style.display = 'block'; // Make sure buttons are visible at the start of animation
+      }
+    });
+  });
+</script>
 
 {% endblock %}
