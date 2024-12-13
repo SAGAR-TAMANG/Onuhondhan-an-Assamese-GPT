@@ -114,3 +114,6 @@ def google_auth_receiver(request):
         # Credential not provided in request, handle the error accordingly
         error_text = "Credential not provided"
         return render(request, 'accounts/error.html', context={'error': error_text}, status=400)
+
+def unavailable(request):
+  return render(request, 'index.html', {'message': "Sorry, unavailable at the moment!"})
