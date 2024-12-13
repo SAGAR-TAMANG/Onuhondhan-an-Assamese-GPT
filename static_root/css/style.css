@@ -1,0 +1,50 @@
+.text-ai {
+  background: linear-gradient(to bottom, #003990, #37c6ff, #90dfff);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.text-ai-2 {
+  background: linear-gradient(to right, #37c6ff, #a35af7, #d96570);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.hero {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+}
+
+header {
+  z-index: 1000;
+}
+
+main {
+  transition: filter 0.3s ease; /* Smooth transition for the blur effect */
+}
+
+.main {
+  filter: blur(20px);
+}
