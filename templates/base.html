@@ -44,7 +44,8 @@
   </div>
   {% block content %}
   {% endblock %}
-  <!-- <script src="{% static 'js/htmx.min.js' %}"></script> -->
+  <script src="{% static 'js/htmx.min.js' %}"></script>
+  <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/ws.js"></script>
   <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
   {% block javascript %}
   {% endblock %}
