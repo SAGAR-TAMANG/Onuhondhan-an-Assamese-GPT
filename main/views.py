@@ -26,14 +26,6 @@ cards = [
   "অসমৰ ইতিহাসত গুৰুত্বপূৰ্ণ ঘটনা #কি কি?"
 ]
 
-# def pages(request):
-#   try:
-#     load_template = request.path.split('/')
-#     print("Load Template:", load_template)
-#     return HttpResponse(status=405)
-#   except:
-#     return HttpResponse(status=500)
-
 def index(request):
   return render(request, 'index.html')
 
@@ -60,46 +52,6 @@ def card_choser():
     normal_texts.append(parts[1])
 
   return bold_texts, normal_texts
-
-def ai(request):
-  from portkey_ai import Portkey
-
-  client = Portkey(
-    api_key=os.getenv("PORTKEY_API_KEY"),
-    virtual_key=os.getenv("VIRTUAL_KEY"),
-  )
-
-  # completion = client.chat.completions.create(
-  # prompt_id="pp-ai-therapi-f9b710",
-  # variables={}
-  # )
-
-  stream_prompt_completion = client.prompts.completions.create(
-    prompt_id="pp-ai-therapi-f9b710",
-    variables={},
-    stream=True
-  )
-
-  # Access and handle the response stream using the _iterator attribute
-  response_text = ""
-  
-  for chunk in stream_prompt_completion._iterator:
-      # Process each chunk of data here
-      # Assuming the chunk is an instance of PromptCompletionChunk
-      print(chunk)
-      
-      # Check if the chunk has a 'text' attribute
-      if hasattr(chunk, 'text'):
-          response_text += chunk.text
-      else:
-          # If 'text' attribute is not present, try accessing other potential attributes or methods
-          # Adjust this based on the actual structure of PromptCompletionChunk
-          if hasattr(chunk, 'data'):
-              response_text += chunk.data
-          elif hasattr(chunk, 'get_text'):
-              response_text += chunk.get_text()
-          else:
-              response_text += str(chunk)  # Convert to string if no suitable attribute or method is found
 
   print('\n\nFINAL \n\n')
 
