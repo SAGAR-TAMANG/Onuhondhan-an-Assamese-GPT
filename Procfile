@@ -1,1 +1,1 @@
-web: daphne core.asgi --log-file=- 
+web: daphne core.asgi
