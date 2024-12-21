@@ -30,9 +30,9 @@
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT/main/static/img/ss.webp" alt="screenshot1">
+<img src="https://raw.githubusercontent.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT/master/static/img/ss.webp" alt="screenshot1">
 
-<img src="https://raw.githubusercontent.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT/main/static/img/ss2.webp" alt="screenshot2">
+<img src="https://raw.githubusercontent.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT/master/static/img/ss2.webp" alt="screenshot2">
 
 <!-- TABLE OF CONTENTS -->
 <details>
