@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT">
-    <img src="https://raw.githubusercontent.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT/main/static/img/logo.png" alt="Logo" height="50">
+    <img src="https://raw.githubusercontent.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT/master/static/img/favicon.png" alt="Logo" height="50">
   </a>
 
 <h3 align="center">Onuhondhan - Assamese GPT</h3>
@@ -30,9 +30,9 @@
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT/main/static/img/ss.webp" alt="screenshot1">
+<img src="https://raw.githubusercontent.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT/master/static/img/ss.webp" alt="screenshot1">
 
-<img src="https://raw.githubusercontent.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT/main/static/img/ss2.webp" alt="screenshot2">
+<img src="https://raw.githubusercontent.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT/master/static/img/ss2.webp" alt="screenshot2">
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -151,7 +151,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <!-- CONTACT -->
 ## Contact
 
-Sagar Tamang - [LinkedIn](https://www.linkedin.com/in/sagar-tmg/) - your-email@example.com
+Sagar Tamang - [LinkedIn](https://www.linkedin.com/in/sagar-tmg/) - sagar.bdr0000@gmail.com
 
 Project Link: [https://github.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT](https://github.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT)
 
