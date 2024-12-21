@@ -151,7 +151,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <!-- CONTACT -->
 ## Contact
 
-Sagar Tamang - [LinkedIn](https://www.linkedin.com/in/sagar-tmg/) - your-email@example.com
+Sagar Tamang - [LinkedIn](https://www.linkedin.com/in/sagar-tmg/) - sagar.bdr0000@gmail.com
 
 Project Link: [https://github.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT](https://github.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT)
 
