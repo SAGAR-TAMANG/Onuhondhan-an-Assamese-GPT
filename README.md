@@ -11,7 +11,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT">
-    <img src="https://raw.githubusercontent.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT/main/static/img/logo.png" alt="Logo" height="50">
+    <img src="https://raw.githubusercontent.com/SAGAR-TAMANG/Onuhondhan-an-Assamese-GPT/master/static/img/logo.png" alt="Logo" height="50">
   </a>
 
 <h3 align="center">Onuhondhan - Assamese GPT</h3>
