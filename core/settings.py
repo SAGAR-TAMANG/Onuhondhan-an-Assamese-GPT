@@ -175,11 +175,6 @@ PWA_APP_SHORTCUTS = [
     }
 ]
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://wearit.feynmanpi.com',
-    'https://www.wearit.feynmanpi.com',
-]
-
 # We need these lines below to allow the Google sign in popup to work.
 SECURE_REFERRER_POLICY = 'no-referrer-when-downgrade'
 SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
@@ -188,3 +183,5 @@ CSRF_TRUSTED_ORIGINS = [
     'https://onuhondhan.feynmanpi.com',
     'https://www.onuhondhan.feynmanpi.com',
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True  # Or specify allowed origins
