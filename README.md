@@ -64,6 +64,7 @@ All development processes are completed, and the project is now live and hosted 
 - Django Python Framework
 - SUTRA model from TWO AI for Assamese Text Chat
 - HTML, CSS, JS for frontend
+- GSAP for intro animations
 - Railway.app for Hosting
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
